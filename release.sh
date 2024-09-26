@@ -3150,7 +3150,7 @@ upload_github() {
 	{
 	  "tag_name": "$tag",
 	  "name": "$tag",
-	  "body": $( jq --slurp --raw-input '.' < "$changelog_path" ),
+	  "body": $( jq --slurp --raw-input '.' < "$changelog_path" | head -c 124000),
 	  "draft": false,
 	  "prerelease": $( [[ "$file_type" != "release" ]] && echo true || echo false )
 	}
